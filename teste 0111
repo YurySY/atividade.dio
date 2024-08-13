@@ -1,0 +1,26 @@
+public class Main {
+    public static void main(String[] args) {
+        // Criar o banco
+        Banco banco = new Banco();
+
+        // Criar clientes
+        Cliente cliente1 = new Cliente("João", "123.456.789-00");
+        Cliente cliente2 = new Cliente("Maria", "987.654.321-00");
+
+        // Criar contas
+        Conta conta1 = banco.criarConta(cliente1);
+        Conta conta2 = banco.criarConta(cliente2);
+
+        // Realizar transações
+        conta1.depositar(1000);
+        Transacao transacao1 = new Transacao(conta1, null, 200, "saque");
+        transacao1.processar();
+
+        Transacao transacao2 = new Transacao(conta1, conta2, 300, "transferência");
+        transacao2.processar();
+
+        // Exibir informações
+        System.out.println(conta1);
+        System.out.println(conta2);
+    }
+}
